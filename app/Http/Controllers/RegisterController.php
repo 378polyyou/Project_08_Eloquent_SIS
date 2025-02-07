@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    //แสดงแบบฟอร์มการลงทะเบียน
+    
     // Show the registration form
     public function create()
     {

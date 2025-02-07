@@ -1,14 +1,28 @@
 <?php
 
-use App\Http\Controllers\EmployeesModelController;
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\RegistrationController;
+use App\Models\Course;
+use App\Models\Student;
+
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\RegisterController;
 
-Route::get('/courses', [CourseController::class, 'index']);
 
+Route::get('/students', [StudentController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'create'])->name('register.create');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+
+Route::Resource('students', StudentController::class);
+Route::Resource('teachers', TeacherController::class);
+Route::Resource('courses', CourseController::class);
+Route::Resource('registers', RegisterController::class);
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
